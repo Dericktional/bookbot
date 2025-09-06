@@ -1,3 +1,6 @@
+def sort_on(chars):
+    return chars["count"]
+
 def get_book_text(filepath):
     return filepath.read()
 
@@ -13,4 +16,14 @@ def get_char_count(book):
             char_count[char.lower()] += 1
         else:
             char_count[char.lower()] = 1
+
     return char_count
+
+def sort_char_count(char_count):
+    sorted_list = []
+
+    for char in char_count:
+        sorted_list.append({"char": char, "count": char_count[char]})
+
+    sorted_list.sort(reverse=True, key=sort_on)
+    return sorted_list
